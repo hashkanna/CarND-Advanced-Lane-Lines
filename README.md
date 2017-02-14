@@ -20,18 +20,18 @@ The Project
 
 The goals / steps of this project are the following:
 
-* Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
+##### 1. Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 Camera Calibration is performed to remove distortions that arise out of the way cameras perform when taking photographs. The distortions include wide-angle, fish eye and 2D representations of 3D real world images
 
 The findChessboard corners function from OpenCV identifies the 9x6 corners from the calibration images in the cal_images folder. The calibrateCamera function then performs calibration using the 2D and 3D representations of the calibration images in cal_images folder to calculate the calibration image matrix and distortion coefficients
 
-* Apply a distortion correction to raw images.
+##### 2. Apply a distortion correction to raw images.
 The calibration image matrix and distortion coefficents are fed into the Undistort function and applied on the 2D images of the 3D world coming from the car.
 
 ![alt text][image_0]
 ![alt text][image_0_1]
 
-* Use color transforms, gradients, etc., to create a thresholded binary image.
+##### 3. Use color transforms, gradients, etc., to create a thresholded binary image.
 
 Color Pixel extractions were performed using the details in the below table to perform vaious colour bitmasks like finding the yellow line using the yellow mask and white lane lines using a white mask on HSV representations of the RGB images and using the InRange threshold function. 
 
@@ -57,7 +57,7 @@ Gaussian Blur is applied on the images.
 ![alt text][image_2_1]
 
 
-* Apply a perspective transform to rectify binary image ("birds-eye view").
+##### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
 Perspective Transform is performed to create a birds-eye view of each image. Four points are identified using the below formula and then the cv2 functions getPerspectiveTransform and warpPerspective are used to perform the perspective transformation on each image from the car to create a corresponding rectangle/birds-eye view image. 
 
 ht_window = np.uint(img_size[0]/1.5)
@@ -70,22 +70,15 @@ cbr_window = c_window + .9*np.uint(img_size[1]/2)
 
 ![alt text][image_1]
 
-* Detect lane pixels and fit to find the lane boundary.
+##### 5. Detect lane pixels and fit to find the lane boundary.
 Lane lines were found by sliding a histogram window. At each slice a point was indexed where the highest density of pixels were found. 
 ![alt text][image_3]
 ![alt text][image_3_1]
 
-* Determine the curvature of the lane and vehicle position with respect to center.
+##### 6. Determine the curvature of the lane and vehicle position with respect to center.
 The radius of curvature is computed by scaling the pixel values of the lane into meters using some scaling factors and these values are then used to compute the polynomial coefficients in meters and then the provided formula is used to compute the radius of curvature.
 
-* Warp the detected lane boundaries back onto the original image.
+##### 7. Warp the detected lane boundaries back onto the original image.
 
-* Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
-The images for camera calibration are stored in the folder called `camera_cal`.  The images in `test_images` are for testing your pipeline on single frames.  If you want to extract more test images from the videos, you can simply use an image writing method like `cv2.imwrite()`, i.e., you can read the video in frame by frame as usual, and for frames you want to save for later you can write to an image file.  
-
-To help the reviewer examine your work, please save examples of the output from each stage of your pipeline in the folder called `ouput_images`, and include a description in your writeup for the project of what each image shows.    The video called `project_video.mp4` is the video your pipeline should work well on.  
-
-The `challenge_video.mp4` video is an extra (and optional) challenge for you if you want to test your pipeline under somewhat trickier conditions.  The `harder_challenge.mp4` video is another optional challenge and is brutal!
-
-If you're feeling ambitious (again, totally optional though), don't stop there!  We encourage you to go out and take video of your own, calibrate your camera and show us how you would implement this project from scratch!
+##### 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
