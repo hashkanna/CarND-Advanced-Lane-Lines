@@ -4,9 +4,10 @@
 [//]: # (Image References)
 
 [image_0]: ./md_resources/image_0.png "Undistorted Chessboard"
-[image_01]: ./md_resources/image_0_1.png "Undistorted Sample Image"
+[image_0_1]: ./md_resources/image_0_1.png "Undistorted Sample Image"
 [image_1]: ./md_resources/image_1.png "Birds-eye View"
 [image_2]: ./md_resources/image_2.png "Bit Mask Extraction"
+[image_2_1]: ./md_resources/image_2_1.png "Gaussian Blur"
 [image_3]: ./md_resources/image_3.png "Histogram Point Fit"
 [image_3_1]: ./md_resources/image_3_1.png "Histogram Point Fit"
 [image_4]: ./md_resources/image_4.png "Polynomial Fit"
@@ -79,6 +80,6 @@ Lane lines were found by sliding a histogram window. At each slice a point was i
 The radius of curvature is computed by scaling the pixel values of the lane into meters using some scaling factors and these values are then used to compute the polynomial coefficients in meters and then the provided formula is used to compute the radius of curvature.
 
 ##### 7. Warp the detected lane boundaries back onto the original image.
-
+![alt text][image_5]
 
 ##### 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
