@@ -88,4 +88,4 @@ Lanes were imposed by taking the polynomial fit points and feeding them int open
 ![alt text][image_5]
 
 ##### 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
-The final output is available in [project_video_result.mp4]
+The final output is available in [project_video_result.mp4](./project_video_result.mp4)
