@@ -80,6 +80,9 @@ Lane lines were found by sliding a histogram window. At each slice a point was i
 The radius of curvature is computed by scaling the pixel values of the lane into meters using some scaling factors and these values are then used to compute the polynomial coefficients in meters and then the provided formula is used to compute the radius of curvature.
 
 ##### 7. Warp the detected lane boundaries back onto the original image.
+Lanes were imposed by taking the polynomial fit points and feeding them int opencv's polyfill function to fill the polygon. The new polygon was then undistorted, truncated, and imposed onto the road.
+
 ![alt text][image_5]
 
 ##### 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
+The final output is available in [project_video_result.mp4]
