@@ -26,10 +26,11 @@ Camera Calibration is performed to remove distortions that arise out of the way 
 
 The findChessboard corners function from OpenCV identifies the 9x6 corners from the calibration images in the cal_images folder. The calibrateCamera function then performs calibration using the 2D and 3D representations of the calibration images in cal_images folder to calculate the calibration image matrix and distortion coefficients
 
+![alt text][image_0]
+
 ##### 2. Apply a distortion correction to raw images.
 The calibration image matrix and distortion coefficents are fed into the Undistort function and applied on the 2D images of the 3D world coming from the car.
 
-![alt text][image_0]
 ![alt text][image_0_1]
 
 ##### 3. Use color transforms, gradients, etc., to create a thresholded binary image.
