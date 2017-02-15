@@ -37,7 +37,7 @@ The calibration image matrix and distortion coefficents are fed into the Undisto
 
 Color Pixel extractions were performed using the details in the below table to perform vaious colour bitmasks like finding the yellow line using the yellow mask and white lane lines using a white mask on HSV representations of the RGB images and using the InRange threshold function. 
 
-image_HSV = cv2.cvtColor(warped,cv2.COLOR_RGB2HSV)
+```image_HSV = cv2.cvtColor(warped,cv2.COLOR_RGB2HSV)
 
 yellow_hsv_low  = np.array([ 0,  100,  100])
 yellow_hsv_high = np.array([ 80, 255, 255])
@@ -48,7 +48,7 @@ white_hsv_low  = np.array([ 18,   9,   240])
 white_hsv_high = np.array([ 45,  45, 255])
 white_mask = cv2.inRange(image_HSV, white_hsv_low, white_hsv_high)
 white1 = cv2.bitwise_and(warped, warped, mask=white_mask)
-
+```
  
 ##### Visualization of Bit Mask
 
@@ -62,14 +62,14 @@ Gaussian Blur is applied on the images.
 ##### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
 Perspective Transform is performed to create a birds-eye view of each image. Four points are identified using the below formula and then the cv2 functions getPerspectiveTransform and warpPerspective are used to perform the perspective transformation on each image from the car to create a corresponding rectangle/birds-eye view image. 
 
-ht_window = np.uint(img_size[0]/1.5)
+```ht_window = np.uint(img_size[0]/1.5)
 hb_window = np.uint(img_size[0])
 c_window = np.uint(img_size[1]/2)
 ctl_window = c_window - .2*np.uint(img_size[1]/2)
 ctr_window = c_window + .2*np.uint(img_size[1]/2)
 cbl_window = c_window - .9*np.uint(img_size[1]/2)
 cbr_window = c_window + .9*np.uint(img_size[1]/2)
-
+```
 ![alt text][image_1]
 
 ##### 5. Detect lane pixels and fit to find the lane boundary.
