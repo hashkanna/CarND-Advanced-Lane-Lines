@@ -35,7 +35,7 @@ The calibration image matrix and distortion coefficents are fed into the Undisto
 
 ##### 3. Use color transforms, gradients, etc., to create a thresholded binary image.
 
-Color Pixel extractions were performed using the details in the below table to perform vaious colour bitmasks like finding the yellow line using the yellow mask and white lane lines using a white mask on HSV representations of the RGB images and using the InRange threshold function. 
+Color Pixel extractions were performed using the details in the below table to perform vaious colour bitmasks like finding the yellow line using the yellow mask and white lane lines using a white mask on HSV representations of the RGB images and using the InRange threshold function.
 
 ```
 image_HSV = cv2.cvtColor(warped,cv2.COLOR_RGB2HSV)
@@ -50,18 +50,18 @@ white_hsv_high = np.array([ 45,  45, 255])
 white_mask = cv2.inRange(image_HSV, white_hsv_low, white_hsv_high)
 white1 = cv2.bitwise_and(warped, warped, mask=white_mask)
 ```
- 
+
 ##### Visualization of Bit Mask
 
 ![alt text][image_2]
- 
+
 Gaussian Blur is applied on the images.
 
 ![alt text][image_2_1]
 
 
 ##### 4. Apply a perspective transform to rectify binary image ("birds-eye view").
-Perspective Transform is performed to create a birds-eye view of each image. Four points are identified using the below formula and then the cv2 functions getPerspectiveTransform and warpPerspective are used to perform the perspective transformation on each image from the car to create a corresponding rectangle/birds-eye view image. 
+Perspective Transform is performed to create a birds-eye view of each image. Four points are identified using the below formula and then the cv2 functions getPerspectiveTransform and warpPerspective are used to perform the perspective transformation on each image from the car to create a corresponding rectangle/birds-eye view image.
 
 ```
 ht_window = np.uint(img_size[0]/1.5)
@@ -75,7 +75,7 @@ cbr_window = c_window + .9*np.uint(img_size[1]/2)
 ![alt text][image_1]
 
 ##### 5. Detect lane pixels and fit to find the lane boundary.
-Lane lines were found by sliding a histogram window. At each slice a point was indexed where the highest density of pixels were found. 
+Lane lines were found by sliding a histogram window. At each slice a point was indexed where the highest density of pixels were found.
 ![alt text][image_3]
 ![alt text][image_3_1]
 
@@ -89,3 +89,9 @@ Lanes were imposed by taking the polynomial fit points and feeding them int open
 
 ##### 8. Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 The final output is available in [project_video_result.mp4](./project_video_result.mp4)
+
+---
+##### Discussion
+* The lanes were jittery in some cases, I had to make some adjustments to choose the correct polygons.
+* Some improvements can be made to the bit mask as I think it is not ideal and can be tested out with different values
+* Different types of convolutional kernels/filters can be tried out to see if there is any improvements in performance especially in places where there are sharp curves in the lanes.
