@@ -94,4 +94,4 @@ The final output is available in [project_video_result.mp4](./project_video_resu
 ##### Discussion
 * The lanes were jittery in some cases, I had to make some adjustments to choose the correct polygons.
 * Some improvements can be made to the bit mask as I think it is not ideal and can be tested out with different values
-* Different types of convolutional kernels/filters can be tried out to see if there is any improvements in performance especially in places where there are sharp curves in the lanes.
+* Some scenarios like sharp curves / "hairpin bends" in the lane might fail with the methods I have used here. Different types of convolutional kernels/filters can be tried out to see if there is any improvements in performance in these kind of scenarios.
